@@ -3,3 +3,5 @@ __pycache__
 node_modules
 local.sh
 .env
+frontend/package-lock.json
+.vscode/settings.json
