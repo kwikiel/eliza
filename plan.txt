@@ -1,0 +1,2 @@
+1. Załoenie jest takie, aby dało się zrobić git clone i później docker compose up i wstanie
+
