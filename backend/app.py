@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.gptmock import ChatBot
+from gptmock import ChatBot
 from pydantic import BaseModel
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
