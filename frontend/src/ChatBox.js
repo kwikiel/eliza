@@ -40,12 +40,13 @@ export default function ChatBox() {
         setIsPending(true);
 
 
-        const response = await fetch(`${API_ROOT}/api/chat?message=${message}`, {
+        const response = await fetch(`${API_ROOT}/api/chat`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
+            body: JSON.stringify({ prompt: message })
         });
         const data = await response.json();
         console.log(data);

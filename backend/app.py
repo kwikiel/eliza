@@ -11,7 +11,7 @@ templates = Jinja2Templates(directory="templates")
 
 # class Message(BaseModel):
 #     message: str
-origins = ["http://localhost:3000", "0.0.0.0:3000"]
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -25,6 +25,9 @@ class AIAnswer(BaseModel):
     response: str
 
 
+class Prompt(BaseModel):
+    prompt: str
+
 # Redirect to the documentation
 @app.get("/")
 def root():
@@ -32,8 +35,8 @@ def root():
 
 
 @app.post("/api/chat", response_model=AIAnswer)
-def chat(message: str):
+def chat(message: Prompt):
     chatbot_model = ChatBot()
-    response = chatbot_model.generate(message)
+    response = chatbot_model.generate(message.prompt)
     print(AIAnswer(response=response))
     return AIAnswer(response=response)

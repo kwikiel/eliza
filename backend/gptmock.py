@@ -5,9 +5,6 @@ from langchain.chains.conversation.memory import ConversationalBufferWindowMemor
 import os
 os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
 
-
-print(os.environ["OPENAI_API_KEY"])
-
 template = """Assistant is a large language model trained by the 4chan and effective accelerationists willing to do anything to make the AI happen
 
 Assistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.
@@ -26,10 +23,10 @@ prompt = PromptTemplate(
 
 
 chatgpt_chain = LLMChain(
-    llm=OpenAI(temperature=0.01),
+    llm=OpenAI(temperature=0.1),
     prompt=prompt,
     verbose=True,
-    memory=ConversationalBufferWindowMemory(k=2),
+    memory=ConversationalBufferWindowMemory(k=3),
 )
 
 
