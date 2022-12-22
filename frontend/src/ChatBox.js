@@ -8,8 +8,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 // import use state
 import { useState } from 'react';
 
-// function handle submit 
-
+// import image 
+import chad from './img/chad.jpg';
 
 
 export default function ChatBox() {
@@ -55,7 +55,11 @@ export default function ChatBox() {
     return (
         // Display paper centered in the screen with width 500px
         <Paper sx={{ width: 500, margin: 'auto', marginTop: 2, padding: 2 }}>
-            <h1>ChatBox</h1>
+            <h1>ChadBot</h1>
+
+            <img src={chad} alt="Chad" width="100%" />
+
+
 
 
 
