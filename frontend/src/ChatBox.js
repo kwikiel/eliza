@@ -25,11 +25,7 @@ export default function ChatBox() {
 
         const message = event.target.value;
         console.log(message);
-        const API_ROOT = 'http://localhost:8000';
-
-
-
-
+        const API_ROOT = process.env.REACT_APP_API_ROOT
 
         // curl -X 'POST' \
         //   'http://localhost:8000/api/chat?message=xd' \
