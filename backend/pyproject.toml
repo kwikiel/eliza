@@ -7,12 +7,13 @@ readme = "README.md"
 packages = [{include = "fruits_colors"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 uvicorn = "^0.20.0"
 fastapi = "^0.88.0"
 openai = "^0.25.0"
-langchain = "^0.0.35"
+langchain = {extras = ["load-tools"], version = "^0.0.48"}
 jinja2 = "^3.1.2"
+google-search-results = "^2.4.1"
 
 
 [build-system]
