@@ -15,7 +15,7 @@ COPY . /app
 # Does notthing = meerely info for a dev to bind 8000 to something external
 EXPOSE 8000
 # Making it as a list allows for control c to close the process
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0"]
+CMD ["uvicorn", "app/config:app", "--host", "0.0.0.0"]
 
 
 

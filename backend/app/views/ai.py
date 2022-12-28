@@ -1,4 +1,6 @@
 from backend.config import app
+from backend.gptmock import ChatBot
+from backend.schema import Prompt, AIAnswer
 
 @app.get("/")
 def root():
