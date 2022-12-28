@@ -1,2 +1,21 @@
 1. Załoenie jest takie, aby dało się zrobić git clone i później docker compose up i wstanie
 
+2. Create .env
+OPENAI_API_KEY=test
+${FRONTEND_PORT} - extract 
+
+3. Create seperated .docker directory: docker-compose.yml, .env 
+ build: 
+      context: ..
+      dockerfile: frontend/ 
+
+4. 
+backend/ 
+   app/
+   config.py (__init__.py) -> fastapi instance, registration of views, cors config
+
+
+
+# [] -> [] -> [] -> 
+
+
