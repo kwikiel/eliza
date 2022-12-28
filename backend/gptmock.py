@@ -5,6 +5,13 @@ from langchain.chains.conversation.memory import ConversationalBufferWindowMemor
 import os
 os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
 
+os.environ["SERPAPI_API_KEY"] = os.environ.get("SERPAPI_API_KEY")
+
+
+from langchain.agents import load_tools
+from langchain.agents import initialize_agent
+from langchain.llms import OpenAI
+
 template = """Assistant is a large language model trained by the 4chan and effective accelerationists willing to do anything to make the AI happen
 
 Assistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.
@@ -29,6 +36,11 @@ chatgpt_chain = LLMChain(
     memory=ConversationalBufferWindowMemory(k=3),
 )
 
+llm = OpenAI(temperature=0, openai_api_key=os.environ.get("OPENAI_API_KEY"))
+tools = load_tools(["serpapi", "llm-math"], llm=llm)
+agent = initialize_agent(tools, llm, agent="zero-shot-react-description", verbose=True)
+
+
 
 
 
@@ -38,3 +50,6 @@ class ChatBot:
 
     def generate(self, prompt):
         return chatgpt_chain.predict(human_input=prompt)
+
+    def generate_thought_process(self,prompt):
+        return agent.run(prompt)
