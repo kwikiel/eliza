@@ -3,11 +3,12 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "80:3000"
+      - "3000:3000"
   backend:
     build: ./backend
     ports:
       - "8000:8000"
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - SERPAPI_API_KEY=${SERPAPI_API_KEY}
   
