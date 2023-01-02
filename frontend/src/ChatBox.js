@@ -50,7 +50,6 @@ export default function ChatBox() {
         setAnswer(data.response);
 
 
-
     }
     return (
         // Display paper centered in the screen with width 500px
@@ -87,11 +86,13 @@ export default function ChatBox() {
 
             {/* Place for the answer, rendered conditionally  */}
             {isPending && <LinearProgress />}
-            {answer && (
+            (
                 <Box sx={{ bgcolor: 'grey.300', p: 2, mt: 2 }}>
                     {answer}
-                </Box>
-            )}
+                </Box>     
+
+                
+            )
 
 
 
