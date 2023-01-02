@@ -1,13 +1,18 @@
-from backend.config import app
-from backend.gptmock import ChatBot
-from backend.schema import Prompt, AIAnswer
+from gptmock import ChatBot
+from app.schemas.ai import Prompt, AIAnswer
+# Import RedirectResponse from fastapi.responses
+from fastapi.responses import RedirectResponse
+from fastapi import APIRouter
 
-@app.get("/")
+router = APIRouter(prefix="/api")
+
+
+@router.get("/")
 def root():
     return RedirectResponse(url="/docs")
 
 
-@app.post("/api/chat", response_model=AIAnswer)
+@router.post("/chat", response_model=AIAnswer)
 def chat(message: Prompt):
     chatbot_model = ChatBot()
     response = chatbot_model.generate(message.prompt)
@@ -15,7 +20,7 @@ def chat(message: Prompt):
     return AIAnswer(response=response)
 
 
-@app.post("/api/thought_process", response_model=AIAnswer)
+@router.post("/thought_process", response_model=AIAnswer)
 def thought_process(message: Prompt):
     chatbot_model = ChatBot()
     response = chatbot_model.generate_thought_process(message.prompt)

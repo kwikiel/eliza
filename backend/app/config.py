@@ -1,10 +1,14 @@
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.views.ai import router
 
 app = FastAPI()
 origins = ["*"]
+
+
+app.include_router(router)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -12,3 +16,4 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
